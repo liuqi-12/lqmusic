@@ -5,10 +5,10 @@ import {changePlayTypeAction} from "../../store/slice"
 
 import {PlayBarRigthStyle} from "./style"
 
-const PlayBarRigth = memo(() => {
-
-  const {playLoop} = useSelector(state => ({
-    playLoop:state.playBarData.loop
+const PlayBarRigth = memo((props) => {
+  const {playLoop,playList} = useSelector(state => ({
+    playLoop:state.playBarData.loop,
+    playList:state.playBarData.playList
   }),shallowEqual)
 
   const dispatch = useDispatch()
@@ -40,7 +40,9 @@ const PlayBarRigth = memo(() => {
             mapPlayType()
           }
         </div>
-        <div className='inco icon-song-list sprite_playbar'></div>
+        <div onClick={e => props.changeIsShowPlayListLyc()} className='inco icon-song-list sprite_playbar'>
+          <span className='songs-num'>{playList.length}</span>
+        </div>
       </div>
     </PlayBarRigthStyle>
   )

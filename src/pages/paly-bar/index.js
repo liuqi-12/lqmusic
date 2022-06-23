@@ -7,6 +7,7 @@ import {getPalySong} from "@/utils/format-utils"
 import PlayBarLeft from "./component/play-bar-left/index"
 import PlayBarCenter from './component/play-bar-center'
 import PlayBarRigth from './component/play-bar-rigth'
+import PlayListLyc from './component/play-list-lyc';
 import {PlayBarStyle} from "./style"
 
 const PlayBar = memo(() => {
@@ -16,6 +17,7 @@ const PlayBar = memo(() => {
   const playBarLeftRef = useRef(null)
   const [isFirstMount, setIsFirstMount] = useState(true)
   const [isLocked,setIsLocked] = useState(false)
+  const [isShowPlayListLyc,setIsShowPlayListLyc] = useState(false)
 
   // redux
   const {currentSong,currentTime} = useSelector((state) => ({
@@ -89,6 +91,16 @@ const PlayBar = memo(() => {
     }
   }
 
+  // 切换歌词列表是否展示
+  const changeIsShowPlayListLyc = useCallback(() => {
+    setIsShowPlayListLyc(!isShowPlayListLyc)
+  },[isShowPlayListLyc])
+
+  // 关闭歌词列表
+  const chosePlayListLyc = useCallback(() => {
+    setIsShowPlayListLyc(false)
+  },[])
+
   return (
     <PlayBarStyle className={`sprite_playbar ${!isLocked?'noLocked':'Locked'}`}>
       <div onClick={ e => setIsLocked(!isLocked)} className='left-lock sprite_playbar'>
@@ -115,13 +127,17 @@ const PlayBar = memo(() => {
 
         </div>
         <div className='rigth'>
-          <PlayBarRigth/>
+          <PlayBarRigth changeIsShowPlayListLyc={changeIsShowPlayListLyc}/>
         </div>
       </div>
       <audio ref={audioRef}
              onTimeUpdate={updataCurrentTime}
              currenttime={currentTime}
       />
+      {
+        isShowPlayListLyc?<PlayListLyc chosePlayListLyc={chosePlayListLyc} />:null
+      }
+
     </PlayBarStyle>
   )
 })

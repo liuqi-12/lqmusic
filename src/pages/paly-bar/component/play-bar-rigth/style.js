@@ -11,15 +11,15 @@ const PlayBarRigthStyle = styled.div`
     display: flex;
     align-items: center;
     .icon-add {
-      background-position: -90px -165px;
+      background-position: -90px -160px;
       &:hover{
-        background-position: -90px -191px;
+        background-position: -90px -186px;
       }
     }
     .icon-share {
-      background-position: -115px -165px;
+      background-position: -115px -160px;
       &:hover{
-        background-position: -115px -191px;
+        background-position: -115px -186px;
       }
     }
   }
@@ -29,35 +29,42 @@ const PlayBarRigthStyle = styled.div`
     align-items: center;
     background-position: -147px -238px;
     .icon-shenyin {
-      background-position: -3px -248px;
+      background-position: -3px -245px;
       &:hover{
-        background-position: -33px -248px;
+        background-position: -33px -245px;
       }
     }
     .icon-xunhun{
-      background-position: -3px -345px;
+      background-position: -3px -340px;
       &:hover{
-        background-position: -33px -345px;
+        background-position: -33px -340px;
       }
     }
     .icon-danqu {
-      background-position: -66px -343px;
+      background-position: -66px -340px;
       &:hover{
-        background-position: -93px -343px;
+        background-position: -93px -340px;
       }
     }
     .icon-suiji {
-      background-position: -66px -248px;
+      background-position: -66px -245px;
       &:hover{
-        background-position: -93px -248px;
+        background-position: -93px -245px;
       }
     }
     .icon-song-list {
+      position: relative;
       width: 59px;
       height: 25px;
-      background-position: -42px -70px;
+      background-position: -42px -66px;
       &:hover{
-        background-position: -42px -100px;
+        background-position: -42px -96px;
+      }
+      .songs-num {
+        position: absolute;
+        right: 10px;
+        top: 7px;
+        color: #666666;
       }
     }
   }

@@ -42,7 +42,7 @@ const playBarSlice = createSlice({
         if(action.payload === "pre") {
           // 点击上一曲时，无论是单曲循环还是循环播放都应该按照循环播放
           if(state.loop === 1|| state.loop === 2) {
-            state.currentIndex = state.currentIndex - 1 < 1 ?1 : state.currentIndex - 1
+            state.currentIndex = state.currentIndex - 1 < 1 ?state.playList.length : state.currentIndex - 1
           } else {
             // 随机播放
             let index = randomPintNum(state.playList.length) + 1
